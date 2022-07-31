@@ -27,6 +27,7 @@ const { useDynamicCache } = useState()
 
 const queryDynamicCache = computed( () => {
     return ( route: any, Component: any ) => {
+        console.log(1231231)
         if ( !useDynamicCache.dynamicCacheList.includes( Component?.type.name as never ) && route.meta?.keepAlive ) {
             useDynamicCache.addDynamicCache(Component?.type.name as never)
         }
@@ -37,5 +38,11 @@ const queryDynamicCache = computed( () => {
 </script>
 
 <style lang="scss" scoped>
+.mode-fade-enter-active, .mode-fade-leave-active {
+    transition: opacity .2s ease
+}
 
+.mode-fade-enter-from, .mode-fade-leave-to {
+    opacity: 0
+}
 </style>

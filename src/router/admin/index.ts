@@ -8,7 +8,7 @@ export default {
             path: '/user/info',
             meta: {
                 keepAlive: true,
-                transition: 'slide-fade',
+                transition: 'mode-fade',
             },
             component: user,
         },
@@ -16,7 +16,7 @@ export default {
             path: '/user/admin',
             meta: {
                 keepAlive: true,
-                transition: 'slide-fade',
+                transition: 'mode-fade',
             },
             component: admin,
         },
