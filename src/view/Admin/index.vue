@@ -10,6 +10,7 @@
 <script setup lang="ts" name="Admin">
 import { reactive } from 'vue'
 
+
 const state = reactive( {
     num: 0
 } )

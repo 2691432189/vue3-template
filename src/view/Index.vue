@@ -1,19 +1,21 @@
 <template>
-    <div>
+    <div class="entry_page">
         <PiniaDome />
-        <router-view v-slot="{ Component, route }">
-            <transition
-                :name="route.meta?.transition"
-                mode="out-in"
-            >
-                <keep-alive :include="queryDynamicCache(route, Component)">
-                    <component
-                        :is="Component"
-                        :key="route?.path"
-                    />
-                </keep-alive>
-            </transition>
-        </router-view>
+        <div class="main">
+            <router-view v-slot="{ Component, route }">
+                <transition
+                    :enter-active-class="`animate__animated ${route.meta.enterActive}`"
+                    :leave-active-class="`animate__animated ${route.meta.leaveActive}`"
+                >
+                    <keep-alive :include="queryDynamicCache(route, Component)">
+                        <component
+                            :is="Component"
+                            :key="route.name"
+                        />
+                    </keep-alive>
+                </transition>
+            </router-view>
+        </div>
     </div>
 </template>
 
@@ -27,9 +29,8 @@ const { useDynamicCache } = useState()
 
 const queryDynamicCache = computed( () => {
     return ( route: any, Component: any ) => {
-        console.log(1231231)
         if ( !useDynamicCache.dynamicCacheList.includes( Component?.type.name as never ) && route.meta?.keepAlive ) {
-            useDynamicCache.addDynamicCache(Component?.type.name as never)
+            useDynamicCache.addDynamicCache( Component?.type.name as never )
         }
         return useDynamicCache.dynamicCacheList
     }
@@ -38,11 +39,13 @@ const queryDynamicCache = computed( () => {
 </script>
 
 <style lang="scss" scoped>
-.mode-fade-enter-active, .mode-fade-leave-active {
-    transition: opacity .2s ease
-}
+.entry_page {
+    .main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 60vh;
+    }
 
-.mode-fade-enter-from, .mode-fade-leave-to {
-    opacity: 0
 }
 </style>

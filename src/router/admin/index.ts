@@ -6,17 +6,21 @@ export default {
     children: [
         {
             path: '/user/info',
+            name: 'userInfo',
             meta: {
                 keepAlive: true,
-                transition: 'mode-fade',
+                leaveActive: 'animate__backOutDown',
+                enterActive: 'animate__bounceInUp'
             },
             component: user,
         },
         {
             path: '/user/admin',
+            name: 'userAdmin',
             meta: {
                 keepAlive: true,
-                transition: 'mode-fade',
+                leaveActive: 'animate__backOutDown',
+                enterActive: 'animate__bounceInUp'
             },
             component: admin,
         },
