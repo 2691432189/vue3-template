@@ -9,8 +9,8 @@ export default {
             name: 'userInfo',
             meta: {
                 keepAlive: true,
-                leaveActive: 'animate__backOutDown',
-                enterActive: 'animate__bounceInUp'
+                leaveActive: 'animate__animated animate__bounceOut',
+                enterActive: 'animate__animated animate__fadeInUp'
             },
             component: user,
         },
@@ -19,8 +19,8 @@ export default {
             name: 'userAdmin',
             meta: {
                 keepAlive: true,
-                leaveActive: 'animate__backOutDown',
-                enterActive: 'animate__bounceInUp'
+                leaveActive: 'animate__animated animate__bounceOut',
+                enterActive: 'animate__animated animate__fadeInUp'
             },
             component: admin,
         },
