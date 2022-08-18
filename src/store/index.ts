@@ -1,6 +1,6 @@
 import { useDynamicCache } from '@/store/useDynamicCache'
 
 
-export const useState = () => ({
+export const useState = () => ( {
     useDynamicCache: useDynamicCache()
-})
+} )

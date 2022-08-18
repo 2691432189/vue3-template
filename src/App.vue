@@ -1,5 +1,5 @@
 <template>
-    <Index/>
+    <Index />
 </template>
 
 <script setup lang="ts">

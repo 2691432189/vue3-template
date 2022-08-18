@@ -8,7 +8,7 @@ export const useDynamicCache = defineStore( 'useDynamicCache', {
     },
     actions: {
         // 添加动态化缓存
-        addDynamicCache( dynamicItem:never ) {
+        addDynamicCache( dynamicItem: never ) {
             return this.dynamicCacheList.push( dynamicItem )
         }
     }

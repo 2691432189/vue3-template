@@ -6,9 +6,10 @@ import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import VueSetupExtend from 'vite-plugin-vue-setup-extend'
 
-export default defineConfig( ({ command, mode }:ConfigEnv) => {
+// @ts-ignore
+export default defineConfig( ( { command, mode }: ConfigEnv ) => {
     // 解构环境变量
-    const { VITE_APP_PORT } = loadEnv('development', './')
+    const { VITE_APP_PORT } = loadEnv( 'development', './' )
 
     // 是否为打包
     const isBuild = command === 'build'
@@ -38,11 +39,11 @@ export default defineConfig( ({ command, mode }:ConfigEnv) => {
             port: VITE_APP_PORT,
             // 设置代理
             proxy: {
-                '/user': {
-                    target: 'http://localhost:8081',
-                    changeOrigin: true,
-                    rewrite: path => path.replace(/^\/api/, '')
-                },
+                // '/user': {
+                //     target: 'http://localhost:8081',
+                //     changeOrigin: true,
+                //     rewrite: path => path.replace( /^\/api/, '' )
+                // },
             }
         },
         build: {

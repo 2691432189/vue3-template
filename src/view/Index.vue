@@ -35,14 +35,14 @@ import { useState } from '@/store'
 import dome from '@/services/dome'
 
 
-onMounted(async () => {
-    const { code, data } = await dome.get({
+onMounted( async () => {
+    const { code, data } = await dome.get( {
         url: '/user',
-        headers: {'Content-Type': 'application/json;charset=UTF-8'}
-    })
+        headers: { 'Content-Type': 'application/json;charset=UTF-8' }
+    } )
 
-    console.log(data)
-})
+    console.log( data )
+} )
 
 
 const { useDynamicCache } = useState()
@@ -63,10 +63,10 @@ const queryDynamicCache = computed( () => {
 <style lang="scss" scoped>
 .entry_page {
     .main {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 60vh;
+        display         : flex;
+        justify-content : center;
+        align-items     : center;
+        height          : 60vh;
     }
 }
 </style>
