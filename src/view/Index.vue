@@ -10,8 +10,8 @@
                 -->
                 <transition
                     mode="out-in"
-                    :enter-active-class="route.meta.enterActive"
-                    :leave-active-class="route.meta.leaveActive"
+                    :enter-active-class="route.meta.enterActive as string"
+                    :leave-active-class="route.meta.leaveActive as string"
                 >
                     <!--
                        include：缓存的路由列表，可在路由中配置
@@ -29,11 +29,24 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, onMounted } from 'vue'
 import PiniaDome from '@/components/PiniaDome/index.vue'
 import { useState } from '@/store'
+import dome from '@/services/dome'
+
+
+onMounted(async () => {
+    const { code, data } = await dome.get({
+        url: '/user',
+        headers: {'Content-Type': 'application/json;charset=UTF-8'}
+    })
+
+    console.log(data)
+})
+
 
 const { useDynamicCache } = useState()
+
 
 // 返回缓存的动画列表
 const queryDynamicCache = computed( () => {
