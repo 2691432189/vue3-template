@@ -1,14 +1,19 @@
 <template>
-    <div>
-        <div>{{ state.num }}</div>
-        <ElButton @click="add">
-            加上
-        </ElButton>
+    <div class="admin">
+       <div class="main">
+           <div>{{ state.num }}</div>
+           <ElButton @click="add">
+               加上
+           </ElButton>
+           <ElButton @click="onReload">
+               刷新页面
+           </ElButton>
+       </div>
     </div>
 </template>
 
 <script setup lang="ts" name="Admin">
-import { reactive } from 'vue'
+import { reactive, inject  } from 'vue'
 
 
 const state = reactive( {
@@ -17,6 +22,12 @@ const state = reactive( {
 
 const add = () => {
     state.num++
+}
+
+// 接收刷新当前路由页面方法,调用即可刷新本页面,参数为当前页面的名字
+const reload = inject('refresh')
+const onReload = () => {
+    reload('User')
 }
 
 

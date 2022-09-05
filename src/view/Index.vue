@@ -16,7 +16,7 @@
                     <!--
                        include：缓存的路由列表，可在路由中配置
                     -->
-                    <keep-alive :include="queryDynamicCache(route, Component)">
+                    <keep-alive :include="queryDynamicCache(route, Component)" :exclude="state.exclude">
                         <component
                             :is="Component"
                             :key="route.name"
@@ -29,12 +29,26 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted } from 'vue'
+import {computed, onMounted, reactive, provide, nextTick} from 'vue'
 import PiniaDome from '@/components/PiniaDome/index.vue'
 import { useState } from '@/store'
 import dome from '@/services/dome'
 
+const state = reactive( {
+    num: 0,
+    isRouterKeepAlive: true,
+    exclude: []
+} )
 
+// 刷新当前路由页面方法，由组件自身调用,name: 页面的名字
+const reload = (name:never) => {
+    state.exclude.push(name)
+    nextTick(() => state.exclude.length = 0)
+}
+// 将刷新页面方法穿透给子路由页面,或者放到pinia中全局使用
+provide('refresh', reload)
+
+// 发送网络请求dome
 onMounted( async () => {
     const { code, data } = await dome.get( {
         url: '/user',
@@ -44,9 +58,8 @@ onMounted( async () => {
     console.log( data )
 } )
 
-
+// pinia页面缓存管理
 const { useDynamicCache } = useState()
-
 
 // 返回缓存的动画列表
 const queryDynamicCache = computed( () => {
