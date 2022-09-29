@@ -6,7 +6,7 @@ export default {
     children: [
         {
             path: '/user/info',
-            name: 'userInfo',
+            name: 'User',
             meta: {
                 keepAlive: true,
                 leaveActive: 'animate__animated animate__bounceOut',
@@ -16,7 +16,7 @@ export default {
         },
         {
             path: '/user/admin',
-            name: 'userAdmin',
+            name: 'Admin',
             meta: {
                 keepAlive: true,
                 leaveActive: 'animate__animated animate__bounceOut',
