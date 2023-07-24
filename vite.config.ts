@@ -51,6 +51,8 @@ export default defineConfig( ( { command, mode }: ConfigEnv ) => {
             target: 'es2015',
             // 打包输出目录
             outDir: 'dist',
+            // 使用terserOptions
+            minify: 'terser',
             // 打包时删除控制台打印
             terserOptions: {
                 compress: {
