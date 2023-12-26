@@ -32,7 +32,7 @@
 import {computed, onMounted, reactive, provide, nextTick} from 'vue'
 import PiniaDome from '@/components/PiniaDome/index.vue'
 import { useState } from '@/store'
-import dome from '@/services/dome'
+import { user } from '@/services/dome/modules/reqDome'
 
 const state = reactive( {
     num: 0,
@@ -50,9 +50,8 @@ provide('refresh', reload)
 
 // 发送网络请求dome
 onMounted( async () => {
-    const { code, data } = await dome.get( {
-        url: '/user',
-        headers: { 'Content-Type': 'application/json;charset=UTF-8' }
+    const { code, data } = await user( {
+        id: 123
     } )
 
     console.log( data )

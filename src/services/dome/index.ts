@@ -1,7 +1,8 @@
 import Http from '@/axios'
+import getAppEnvConfig from '@/utils/getAppEnvConfig'
 
-const dome = new Http( {
-    baseURL: 'http://127.0.0.1:8000',
+const domeHttp = new Http( {
+    baseURL: getAppEnvConfig().VITE_DOME_API_URL,
     timeout: 1000 * 60 * 5,
     withCredentials: true,
     interceptors: {
@@ -18,4 +19,4 @@ const dome = new Http( {
     },
 } )
 
-export default dome
+export default domeHttp

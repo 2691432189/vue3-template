@@ -1,5 +1,5 @@
 import axios from 'axios'
-import type { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
+import type { AxiosInstance, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from 'axios'
 import type { RequestConfig, RequestInterceptors } from './type'
 
 class Http {
@@ -17,7 +17,7 @@ class Http {
          * @description 全局请求拦截器
          */
         this.instance.interceptors.request.use(
-            ( res: AxiosRequestConfig ) => {
+            ( res: InternalAxiosRequestConfig ) => {
                 console.log( '全局请求拦截器' )
                 return res
             },

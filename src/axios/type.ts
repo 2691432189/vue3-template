@@ -2,10 +2,10 @@ import type { AxiosRequestConfig, AxiosResponse } from 'axios'
 
 export interface RequestInterceptors {
     // 请求拦截
-    requestInterceptors?: ( config: AxiosRequestConfig ) => AxiosRequestConfig
+    requestInterceptors?: ( config: AxiosRequestConfig ) => any
     requestInterceptorsCatch?: ( err: any ) => any
     // 响应拦截
-    responseInterceptors?: ( config: AxiosResponse ) => AxiosResponse
+    responseInterceptors?: ( config: AxiosResponse ) => any
     responseInterceptorsCatch?: ( err: any ) => any
 }
 
