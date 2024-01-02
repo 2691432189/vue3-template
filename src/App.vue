@@ -7,7 +7,7 @@ import 'animate.css'
 import 'normalize.css'
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import "@/style/index.scss";
 
 </style>
