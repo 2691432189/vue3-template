@@ -1,8 +1,10 @@
-import { defineConfig, loadEnv, ConfigEnv } from 'vite'
+import { ConfigEnv, defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
+import Icons from 'unplugin-icons/vite'
+import IconsResolver from 'unplugin-icons/resolver'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import VueSetupExtend from 'vite-plugin-vue-setup-extend'
 
@@ -20,12 +22,28 @@ export default defineConfig( ( { command, mode }: ConfigEnv ) => {
             vue(),
             // 给setup组件添加name
             VueSetupExtend(),
-            // 自动引入依赖的Element-ui
+            // 自动引入依赖的Element-ui、icon
             AutoImport( {
-                resolvers: [ ElementPlusResolver() ],
+                imports: [ 'vue', 'vue-router', 'pinia' ],
+                resolvers: [
+                    ElementPlusResolver(),
+                    IconsResolver( {
+                        prefix: 'Icon',
+                    } )
+                ],
             } ),
+            // 自动注册Element-ui、icon
             Components( {
-                resolvers: [ ElementPlusResolver() ],
+                resolvers: [
+                    ElementPlusResolver(),
+                    IconsResolver( {
+                        enabledCollections: [ 'ep' ],
+                    } )
+                ],
+            } ),
+            // icon自动下载
+            Icons( {
+                autoInstall: true,
             } )
         ],
         resolve: {
