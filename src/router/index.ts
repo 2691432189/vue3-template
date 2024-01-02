@@ -1,12 +1,13 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 
-import admin from '@/router/admin/index'
+import home from '@/router/home'
 
 const routes: Array<RouteRecordRaw> = [
     {
         path: '/',
+        redirect: "/home/homePage",
         children: [
-            admin
+            home
         ]
     }
 ]
