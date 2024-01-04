@@ -28,12 +28,15 @@
         </RouterView>
     </div>
 </template>
-
+courseManag
 <script setup lang="ts">
 import PublicNav from "@/layouts/PublicNav/index.vue"
 import TagsNav from '@/layouts/TagsNav/index.vue'
 import { computed, nextTick, provide, reactive } from 'vue'
 import { useState } from '@/store'
+
+// pinia页面缓存管理
+const { useDynamicCache } = useState()
 
 const state = reactive( {
     num: 0,
@@ -47,7 +50,19 @@ const reload = ( name: never ) => {
     nextTick( () => state.exclude.length = 0 )
 }
 // 将刷新页面方法穿透给子路由页面,或者放到pinia中全局使用
-provide( 'refresh', reload )
+provide( 'refreshPage', reload )
+
+// 删除nav栏标签
+const delNavTage = ( name: never ) => {
+    for ( let i = 0; i < useDynamicCache.dynamicCacheList.length; i++ ) {
+        if ( useDynamicCache.dynamicCacheList[ i ]?.name === name ) {
+            useDynamicCache.dynamicCacheList.splice( i, 1 )
+        }
+    }
+}
+// 将删除nav栏标签方法穿透给子路由页面,或者放到pinia中全局使用
+provide( 'delNavTage', delNavTage )
+
 
 // 发送网络请求dome
 // onMounted( async () => {
@@ -57,9 +72,6 @@ provide( 'refresh', reload )
 //
 //     console.log( data )
 // } )
-
-// pinia页面缓存管理
-const { useDynamicCache } = useState()
 
 // 返回缓存的动画列表
 const queryDynamicCache = computed( () => {
