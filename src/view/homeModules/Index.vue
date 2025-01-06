@@ -28,7 +28,7 @@
         </RouterView>
     </div>
 </template>
-courseManag
+
 <script setup lang="ts">
 import PublicNav from "@/layouts/PublicNav/index.vue"
 import TagsNav from '@/layouts/TagsNav/index.vue'
