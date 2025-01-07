@@ -12,9 +12,9 @@ import { onMounted } from "vue";
 console.log('homePage')
 
 onMounted(() => {
-    test()
-    test()
-    test()
+    // test()
+    // test()
+    // test()
 })
 
 const test = async() => {
