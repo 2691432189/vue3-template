@@ -1,5 +1,5 @@
 <template>
-    <div class="entry_page">
+    <div id="entry_page">
         <PublicNav />
 
         <TagsNav />
@@ -32,6 +32,7 @@
 <script setup lang="ts">
 import PublicNav from "@/layouts/PublicNav/index.vue"
 import TagsNav from '@/layouts/TagsNav/index.vue'
+// vue@3.5+ defineProps与defineEmits只是编译器宏，不再需要导入。
 import { computed, nextTick, provide, reactive } from 'vue'
 import { useState } from '@/store'
 
@@ -92,4 +93,7 @@ const queryDynamicCache = computed( () => {
 </script>
 
 <style lang="scss" scoped>
+#entry_page {
+
+}
 </style>

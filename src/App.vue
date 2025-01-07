@@ -13,6 +13,7 @@ import "element-plus/theme-chalk/el-message-box.css"
 </script>
 
 <style lang="scss">
-@import "@/style/index.scss";
+// 新版scss已经弃用@import，请使用@use
+@use "@/style/index.scss";
 
 </style>

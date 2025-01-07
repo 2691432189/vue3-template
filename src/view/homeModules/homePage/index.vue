@@ -1,5 +1,5 @@
 <template>
-    <div class="home-page">
+    <div id="home_page">
         homePage
     </div>
 </template>
@@ -27,7 +27,7 @@ const test = async() => {
 </script>
 
 <style scoped lang="scss">
-.home-page {
+#home_page {
 
 }
 </style>
