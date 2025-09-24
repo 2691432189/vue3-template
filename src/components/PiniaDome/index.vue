@@ -5,8 +5,13 @@
     </div>
 </template>
 
-<script setup lang="ts" name="PiniaDome">
+<script setup lang="ts">
 import { useRouter } from 'vue-router'
+
+/*
+* INFO: 注册组件名称
+* **/
+defineOptions( { name: 'PiniaDome' } )
 
 const router = useRouter()
 

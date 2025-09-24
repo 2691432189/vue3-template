@@ -5,6 +5,10 @@
 </template>
 
 <script setup lang="ts">
+/*
+* INFO: 注册组件名称
+* **/
+defineOptions( { name: 'exception_404' } )
 
 </script>
 

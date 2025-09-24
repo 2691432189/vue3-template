@@ -35,6 +35,11 @@ import TagsNav from '@/layouts/TagsNav/index.vue'
 import { computed, reactive } from 'vue'
 import { useState } from '@/store'
 
+/*
+* INFO: 注册组件名称
+* **/
+defineOptions( { name: 'exceptionModules' } )
+
 // pinia页面缓存管理
 const { useDynamicCache } = useState()
 

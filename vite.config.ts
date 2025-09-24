@@ -6,7 +6,6 @@ import Components from 'unplugin-vue-components/vite'
 import Icons from 'unplugin-icons/vite'
 import IconsResolver from 'unplugin-icons/resolver'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
-import VueSetupExtend from 'vite-plugin-vue-setup-extend'
 
 // @ts-ignore
 export default defineConfig( ( { command, mode }: ConfigEnv ) => {
@@ -20,8 +19,6 @@ export default defineConfig( ( { command, mode }: ConfigEnv ) => {
     return {
         plugins: [
             vue(),
-            // 给setup组件添加name
-            VueSetupExtend(),
             // 自动引入依赖的Element-ui、icon
             AutoImport( {
                 imports: [ 'vue', 'vue-router', 'pinia' ],
